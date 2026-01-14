@@ -21,20 +21,35 @@
         .debug-info { background: #f0f8ff; border: 1px dashed #4CAF50; padding: 10px; border-radius: 5px; margin-bottom: 15px; font-size: 12px; font-family: monospace; }
         .test-section { background: #fff3cd; border: 1px dashed #ff9800; padding: 10px; border-radius: 5px; margin: 15px 0; }
         .wallet-address { font-family: monospace; word-break: break-all; }
-    
+        
+        /* Add these styles to fix layout issues */
+        .name-edit-form {
+            max-width: 100%;
+            overflow: hidden;
+        }
+        
         .password-strength {
             margin-top: 5px;
             font-size: 12px;
             height: 5px;
             border-radius: 3px;
             transition: all 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
         }
-
-        .strength-0 { background: #ff4444; width: 20%; } /* Very weak */
-        .strength-1 { background: #ff8800; width: 40%; } /* Weak */
-        .strength-2 { background: #ffbb33; width: 60%; } /* Fair */
-        .strength-3 { background: #00C851; width: 80%; } /* Good */
-        .strength-4 { background: #007E33; width: 100%; } /* Strong */
+        .strength-0 { background: #ff4444; width: 20%; }
+        .strength-1 { background: #ff8800; width: 40%; }
+        .strength-2 { background: #ffbb33; width: 60%; }
+        .strength-3 { background: #00C851; width: 80%; }
+        .strength-4 { background: #007E33; width: 100%; }
+        
+        /* Ensure buttons don't overflow on mobile */
+        @media (max-width: 480px) {
+            .btn {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+        }
 
         .password-requirements {
             font-size: 12px;
@@ -109,13 +124,13 @@
                     <div id="passwordChangeForm" class="name-edit-form" style="display: none;">
                         <div style="margin-bottom: 15px;">
                             <label style="display: block; margin-bottom: 5px; font-weight: 500;">รหัสผ่านปัจจุบัน</label>
-                            <div style="position: relative;">
+                            <div style="position: relative; width: 100%;">
                                 <input type="password" id="currentPassword" 
-                                    style="width: 100%; padding: 8px 40px 8px 8px; border: 1px solid #ccc; border-radius: 4px;"
+                                    style="width: 100%; padding: 8px 35px 8px 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"
                                     placeholder="ใส่รหัสผ่านปัจจุบัน">
                                 <button type="button" onclick="togglePasswordVisibility('currentPassword', 'currentPasswordIcon')" 
-                                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #666; width: 20px; height: 20px; padding: 0;">
-                                    <svg id="currentPasswordIcon" class="w-5 h-5" viewBox="0 0 48 48" style="width: 20px; height: 20px; fill: currentColor;">
+                                    style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #666; width: 20px; height: 20px; padding: 0; margin: 0;">
+                                    <svg id="currentPasswordIcon" viewBox="0 0 48 48" style="width: 20px; height: 20px; fill: currentColor;">
                                         <path d="M38.88 41.7a1 1 0 0 0 1.41 0l1.42-1.4a1 1 0 0 0 0-1.42l-3.86-3.86a24.57 24.57 0 0 0 6.27-9.69 1 1 0 0 0 0-.66C41 15.8 32.66 9 23 9c-3.27 0-6.35.73-9.12 2.05L9.12 6.29a1 1 0 0 0-1.41 0L6.29 7.71a1 1 0 0 0 0 1.41l32.59 32.59Zm-22-27.66A17.8 17.8 0 0 1 23 13c12.75 0 17 12 17 12s-1.38 3.9-4.93 7.25l-4.54-4.55A7.99 7.99 0 0 0 23 17c-.95 0-1.86.16-2.7.47l-3.43-3.43ZM1.87 24.67a24.64 24.64 0 0 1 5.8-9.23l2.77 2.78C7.25 21.46 6 25 6 25s4.25 12 17 12a18 18 0 0 0 5.42-.8l3.05 3.05A21.2 21.2 0 0 1 23 41c-9.83 0-17.93-6.63-21.13-15.67a1 1 0 0 1 0-.66Z"></path>
                                         <path d="M15 25c0-.68.08-1.35.24-1.98l9.74 9.73A8.02 8.02 0 0 1 15 25Z"></path>
                                     </svg>
@@ -125,13 +140,13 @@
                         
                         <div style="margin-bottom: 15px;">
                             <label style="display: block; margin-bottom: 5px; font-weight: 500;">รหัสผ่านใหม่</label>
-                            <div style="position: relative;">
+                            <div style="position: relative; width: 100%;">
                                 <input type="password" id="newPassword" 
-                                    style="width: 100%; padding: 8px 40px 8px 8px; border: 1px solid #ccc; border-radius: 4px;"
+                                    style="width: 100%; padding: 8px 35px 8px 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"
                                     placeholder="รหัสผ่านใหม่ (อย่างน้อย 6 ตัวอักษร)">
                                 <button type="button" onclick="togglePasswordVisibility('newPassword', 'newPasswordIcon')" 
-                                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #666; width: 20px; height: 20px; padding: 0;">
-                                    <svg id="newPasswordIcon" class="w-5 h-5" viewBox="0 0 48 48" style="width: 20px; height: 20px; fill: currentColor;">
+                                    style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #666; width: 20px; height: 20px; padding: 0; margin: 0;">
+                                    <svg id="newPasswordIcon" viewBox="0 0 48 48" style="width: 20px; height: 20px; fill: currentColor;">
                                         <path d="M38.88 41.7a1 1 0 0 0 1.41 0l1.42-1.4a1 1 0 0 0 0-1.42l-3.86-3.86a24.57 24.57 0 0 0 6.27-9.69 1 1 0 0 0 0-.66C41 15.8 32.66 9 23 9c-3.27 0-6.35.73-9.12 2.05L9.12 6.29a1 1 0 0 0-1.41 0L6.29 7.71a1 1 0 0 0 0 1.41l32.59 32.59Zm-22-27.66A17.8 17.8 0 0 1 23 13c12.75 0 17 12 17 12s-1.38 3.9-4.93 7.25l-4.54-4.55A7.99 7.99 0 0 0 23 17c-.95 0-1.86.16-2.7.47l-3.43-3.43ZM1.87 24.67a24.64 24.64 0 0 1 5.8-9.23l2.77 2.78C7.25 21.46 6 25 6 25s4.25 12 17 12a18 18 0 0 0 5.42-.8l3.05 3.05A21.2 21.2 0 0 1 23 41c-9.83 0-17.93-6.63-21.13-15.67a1 1 0 0 1 0-.66Z"></path>
                                         <path d="M15 25c0-.68.08-1.35.24-1.98l9.74 9.73A8.02 8.02 0 0 1 15 25Z"></path>
                                     </svg>
@@ -141,13 +156,13 @@
                         
                         <div style="margin-bottom: 20px;">
                             <label style="display: block; margin-bottom: 5px; font-weight: 500;">ยืนยันรหัสผ่านใหม่</label>
-                            <div style="position: relative;">
+                            <div style="position: relative; width: 100%;">
                                 <input type="password" id="confirmPassword" 
-                                    style="width: 100%; padding: 8px 40px 8px 8px; border: 1px solid #ccc; border-radius: 4px;"
+                                    style="width: 100%; padding: 8px 35px 8px 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"
                                     placeholder="ยืนยันรหัสผ่านใหม่">
                                 <button type="button" onclick="togglePasswordVisibility('confirmPassword', 'confirmPasswordIcon')" 
-                                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #666; width: 20px; height: 20px; padding: 0;">
-                                    <svg id="confirmPasswordIcon" class="w-5 h-5" viewBox="0 0 48 48" style="width: 20px; height: 20px; fill: currentColor;">
+                                    style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #666; width: 20px; height: 20px; padding: 0; margin: 0;">
+                                    <svg id="confirmPasswordIcon" viewBox="0 0 48 48" style="width: 20px; height: 20px; fill: currentColor;">
                                         <path d="M38.88 41.7a1 1 0 0 0 1.41 0l1.42-1.4a1 1 0 0 0 0-1.42l-3.86-3.86a24.57 24.57 0 0 0 6.27-9.69 1 1 0 0 0 0-.66C41 15.8 32.66 9 23 9c-3.27 0-6.35.73-9.12 2.05L9.12 6.29a1 1 0 0 0-1.41 0L6.29 7.71a1 1 0 0 0 0 1.41l32.59 32.59Zm-22-27.66A17.8 17.8 0 0 1 23 13c12.75 0 17 12 17 12s-1.38 3.9-4.93 7.25l-4.54-4.55A7.99 7.99 0 0 0 23 17c-.95 0-1.86.16-2.7.47l-3.43-3.43ZM1.87 24.67a24.64 24.64 0 0 1 5.8-9.23l2.77 2.78C7.25 21.46 6 25 6 25s4.25 12 17 12a18 18 0 0 0 5.42-.8l3.05 3.05A21.2 21.2 0 0 1 23 41c-9.83 0-17.93-6.63-21.13-15.67a1 1 0 0 1 0-.66Z"></path>
                                         <path d="M15 25c0-.68.08-1.35.24-1.98l9.74 9.73A8.02 8.02 0 0 1 15 25Z"></path>
                                     </svg>
@@ -155,14 +170,14 @@
                             </div>
                         </div>
                         
-                        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                            <button onclick="changePassword()" class="btn" style="background: #4CAF50;">
+                        <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+                            <button onclick="changePassword()" class="btn" style="background: #4CAF50; flex: 1; min-width: 150px;">
                                 🔐 เปลี่ยนรหัสผ่าน
                             </button>
-                            <button onclick="cancelPasswordChange()" class="btn" style="background: #757575;">
+                            <button onclick="cancelPasswordChange()" class="btn" style="background: #757575; flex: 1; min-width: 100px;">
                                 ❌ ยกเลิก
                             </button>
-                            <button onclick="testChangePasswordAPI()" class="btn" style="background: #9C27B0; font-size: 12px; padding: 5px 10px;">
+                            <button onclick="testChangePasswordAPI()" class="btn" style="background: #9C27B0; font-size: 12px; padding: 8px 12px; min-width: 100px;">
                                 🧪 Test API
                             </button>
                         </div>
@@ -170,11 +185,11 @@
                         <p id="passwordChangeMessage" style="margin: 15px 0 0 0; font-size: 14px;"></p>
                     </div>
                     
-                    <button onclick="togglePasswordChange()" class="btn" style="padding: 8px 16px; background: #607D8B;">
+                    <button onclick="togglePasswordChange()" class="btn" style="padding: 8px 16px; background: #607D8B; width: 100%;">
                         🔑 เปลี่ยนรหัสผ่าน
                     </button>
                 </div>
-                
+          
                 <p><strong>เลขกระเป๋า:</strong> <span id="userId" class="wallet-address">Loading...</span></p>
                 <p><strong>Token ID:</strong> <span id="tokenId">Loading...</span></p>
                 <p><strong>สถานะ:</strong> <span style="color: green;">✅ สมาชิก</span></p>
