@@ -111,14 +111,14 @@
                             <label style="display: block; margin-bottom: 5px; font-weight: 500;">รหัสผ่านปัจจุบัน</label>
                             <div style="position: relative;">
                                 <input type="password" id="currentPassword" 
-                                    style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"
+                                    style="width: 100%; padding: 8px 40px 8px 8px; border: 1px solid #ccc; border-radius: 4px;"
                                     placeholder="ใส่รหัสผ่านปัจจุบัน">
-                                <button type="button" onclick="togglePasswordVisibility('currentPassword')" 
-                                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #666;">
-                                    👁️
-                                </button>
-                                <button onclick="testChangePasswordAPI()" class="btn" style="background: #9C27B0; font-size: 12px; padding: 5px 10px;">
-                                    🧪 Test Change Password API
+                                <button type="button" onclick="togglePasswordVisibility('currentPassword', 'currentPasswordIcon')" 
+                                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #666; width: 20px; height: 20px; padding: 0;">
+                                    <svg id="currentPasswordIcon" class="w-5 h-5" viewBox="0 0 48 48" style="width: 20px; height: 20px; fill: currentColor;">
+                                        <path d="M38.88 41.7a1 1 0 0 0 1.41 0l1.42-1.4a1 1 0 0 0 0-1.42l-3.86-3.86a24.57 24.57 0 0 0 6.27-9.69 1 1 0 0 0 0-.66C41 15.8 32.66 9 23 9c-3.27 0-6.35.73-9.12 2.05L9.12 6.29a1 1 0 0 0-1.41 0L6.29 7.71a1 1 0 0 0 0 1.41l32.59 32.59Zm-22-27.66A17.8 17.8 0 0 1 23 13c12.75 0 17 12 17 12s-1.38 3.9-4.93 7.25l-4.54-4.55A7.99 7.99 0 0 0 23 17c-.95 0-1.86.16-2.7.47l-3.43-3.43ZM1.87 24.67a24.64 24.64 0 0 1 5.8-9.23l2.77 2.78C7.25 21.46 6 25 6 25s4.25 12 17 12a18 18 0 0 0 5.42-.8l3.05 3.05A21.2 21.2 0 0 1 23 41c-9.83 0-17.93-6.63-21.13-15.67a1 1 0 0 1 0-.66Z"></path>
+                                        <path d="M15 25c0-.68.08-1.35.24-1.98l9.74 9.73A8.02 8.02 0 0 1 15 25Z"></path>
+                                    </svg>
                                 </button>
                             </div>
                         </div>
@@ -127,11 +127,14 @@
                             <label style="display: block; margin-bottom: 5px; font-weight: 500;">รหัสผ่านใหม่</label>
                             <div style="position: relative;">
                                 <input type="password" id="newPassword" 
-                                    style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"
+                                    style="width: 100%; padding: 8px 40px 8px 8px; border: 1px solid #ccc; border-radius: 4px;"
                                     placeholder="รหัสผ่านใหม่ (อย่างน้อย 6 ตัวอักษร)">
-                                <button type="button" onclick="togglePasswordVisibility('newPassword')" 
-                                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #666;">
-                                    👁️
+                                <button type="button" onclick="togglePasswordVisibility('newPassword', 'newPasswordIcon')" 
+                                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #666; width: 20px; height: 20px; padding: 0;">
+                                    <svg id="newPasswordIcon" class="w-5 h-5" viewBox="0 0 48 48" style="width: 20px; height: 20px; fill: currentColor;">
+                                        <path d="M38.88 41.7a1 1 0 0 0 1.41 0l1.42-1.4a1 1 0 0 0 0-1.42l-3.86-3.86a24.57 24.57 0 0 0 6.27-9.69 1 1 0 0 0 0-.66C41 15.8 32.66 9 23 9c-3.27 0-6.35.73-9.12 2.05L9.12 6.29a1 1 0 0 0-1.41 0L6.29 7.71a1 1 0 0 0 0 1.41l32.59 32.59Zm-22-27.66A17.8 17.8 0 0 1 23 13c12.75 0 17 12 17 12s-1.38 3.9-4.93 7.25l-4.54-4.55A7.99 7.99 0 0 0 23 17c-.95 0-1.86.16-2.7.47l-3.43-3.43ZM1.87 24.67a24.64 24.64 0 0 1 5.8-9.23l2.77 2.78C7.25 21.46 6 25 6 25s4.25 12 17 12a18 18 0 0 0 5.42-.8l3.05 3.05A21.2 21.2 0 0 1 23 41c-9.83 0-17.93-6.63-21.13-15.67a1 1 0 0 1 0-.66Z"></path>
+                                        <path d="M15 25c0-.68.08-1.35.24-1.98l9.74 9.73A8.02 8.02 0 0 1 15 25Z"></path>
+                                    </svg>
                                 </button>
                             </div>
                         </div>
@@ -140,21 +143,27 @@
                             <label style="display: block; margin-bottom: 5px; font-weight: 500;">ยืนยันรหัสผ่านใหม่</label>
                             <div style="position: relative;">
                                 <input type="password" id="confirmPassword" 
-                                    style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"
+                                    style="width: 100%; padding: 8px 40px 8px 8px; border: 1px solid #ccc; border-radius: 4px;"
                                     placeholder="ยืนยันรหัสผ่านใหม่">
-                                <button type="button" onclick="togglePasswordVisibility('confirmPassword')" 
-                                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #666;">
-                                    👁️
+                                <button type="button" onclick="togglePasswordVisibility('confirmPassword', 'confirmPasswordIcon')" 
+                                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #666; width: 20px; height: 20px; padding: 0;">
+                                    <svg id="confirmPasswordIcon" class="w-5 h-5" viewBox="0 0 48 48" style="width: 20px; height: 20px; fill: currentColor;">
+                                        <path d="M38.88 41.7a1 1 0 0 0 1.41 0l1.42-1.4a1 1 0 0 0 0-1.42l-3.86-3.86a24.57 24.57 0 0 0 6.27-9.69 1 1 0 0 0 0-.66C41 15.8 32.66 9 23 9c-3.27 0-6.35.73-9.12 2.05L9.12 6.29a1 1 0 0 0-1.41 0L6.29 7.71a1 1 0 0 0 0 1.41l32.59 32.59Zm-22-27.66A17.8 17.8 0 0 1 23 13c12.75 0 17 12 17 12s-1.38 3.9-4.93 7.25l-4.54-4.55A7.99 7.99 0 0 0 23 17c-.95 0-1.86.16-2.7.47l-3.43-3.43ZM1.87 24.67a24.64 24.64 0 0 1 5.8-9.23l2.77 2.78C7.25 21.46 6 25 6 25s4.25 12 17 12a18 18 0 0 0 5.42-.8l3.05 3.05A21.2 21.2 0 0 1 23 41c-9.83 0-17.93-6.63-21.13-15.67a1 1 0 0 1 0-.66Z"></path>
+                                        <path d="M15 25c0-.68.08-1.35.24-1.98l9.74 9.73A8.02 8.02 0 0 1 15 25Z"></path>
+                                    </svg>
                                 </button>
                             </div>
                         </div>
                         
-                        <div style="display: flex; gap: 10px;">
+                        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
                             <button onclick="changePassword()" class="btn" style="background: #4CAF50;">
                                 🔐 เปลี่ยนรหัสผ่าน
                             </button>
                             <button onclick="cancelPasswordChange()" class="btn" style="background: #757575;">
                                 ❌ ยกเลิก
+                            </button>
+                            <button onclick="testChangePasswordAPI()" class="btn" style="background: #9C27B0; font-size: 12px; padding: 5px 10px;">
+                                🧪 Test API
                             </button>
                         </div>
                         
@@ -507,8 +516,8 @@
             document.getElementById('passwordChangeMessage').textContent = '';
             document.getElementById('currentPassword').focus();
             
-            // Add password strength indicator if not exists
-            addPasswordStrengthIndicator();
+            // Initialize password strength indicator
+            initializePasswordChangeForm();
         }
     }
 
@@ -820,6 +829,136 @@
             console.error('Test error:', error);
             alert('Error: ' + error.message);
         }
+    }
+
+    // ========== PASSWORD VISIBILITY TOGGLE ==========
+    function togglePasswordVisibility(fieldId, iconId) {
+        const field = document.getElementById(fieldId);
+        const icon = document.getElementById(iconId);
+        
+        if (field.type === 'password') {
+            field.type = 'text';
+            // Switch to visible icon
+            icon.innerHTML = `
+                <path d="M41.4 23.71a.9.9 0 0 1 0 .58c-.63 1.92-2.2 4.89-4.82 7.51A17.35 17.35 0 0 1 24 37.11c-5.42 0-9.55 2.28-12.58 5.3a20.44 20.44 0 0 1-4.82-7.52.9.9 0 0 1 0-.58c.63-1.92 2.2-4.89 4.82-7.51A17.35 17.35 0 0 1 24 10.89c5.42 0 9.55 2.28 12.58 5.3a20.44 20.44 0 0 1 4.82 7.52ZM24 41c13.83 0 20.82-11.7 21.96-16.81a.85.85 0 0 0 0-.38C44.82 18.71 37.83 7 24 7S3.18 18.7 2.04 23.81a.85.85 0 0 0 0 .38C3.18 29.29 10.17 41 24 41Z"></path>
+                <path d="M24 27.21a3.21 3.21 0 1 1 0-6.42 3.21 3.21 0 0 1 0 6.42Zm0 4.29a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15Z"></path>
+            `;
+        } else {
+            field.type = 'password';
+            // Switch to hidden icon
+            icon.innerHTML = `
+                <path d="M38.88 41.7a1 1 0 0 0 1.41 0l1.42-1.4a1 1 0 0 0 0-1.42l-3.86-3.86a24.57 24.57 0 0 0 6.27-9.69 1 1 0 0 0 0-.66C41 15.8 32.66 9 23 9c-3.27 0-6.35.73-9.12 2.05L9.12 6.29a1 1 0 0 0-1.41 0L6.29 7.71a1 1 0 0 0 0 1.41l32.59 32.59Zm-22-27.66A17.8 17.8 0 0 1 23 13c12.75 0 17 12 17 12s-1.38 3.9-4.93 7.25l-4.54-4.55A7.99 7.99 0 0 0 23 17c-.95 0-1.86.16-2.7.47l-3.43-3.43ZM1.87 24.67a24.64 24.64 0 0 1 5.8-9.23l2.77 2.78C7.25 21.46 6 25 6 25s4.25 12 17 12a18 18 0 0 0 5.42-.8l3.05 3.05A21.2 21.2 0 0 1 23 41c-9.83 0-17.93-6.63-21.13-15.67a1 1 0 0 1 0-.66Z"></path>
+                <path d="M15 25c0-.68.08-1.35.24-1.98l9.74 9.73A8.02 8.02 0 0 1 15 25Z"></path>
+            `;
+        }
+    }
+
+    // ========== PASSWORD STRENGTH INDICATOR ==========
+    function addPasswordStrengthIndicator() {
+        const newPasswordField = document.getElementById('newPassword');
+        
+        // Create strength indicator if not exists
+        if (!document.getElementById('passwordStrength')) {
+            const strengthDiv = document.createElement('div');
+            strengthDiv.id = 'passwordStrength';
+            strengthDiv.className = 'password-strength strength-0';
+            newPasswordField.parentElement.parentElement.appendChild(strengthDiv);
+        }
+        
+        // Add input event listener
+        newPasswordField.addEventListener('input', updatePasswordStrength);
+    }
+
+    function updatePasswordStrength() {
+        const password = document.getElementById('newPassword').value;
+        const strength = checkPasswordStrength(password);
+        const strengthDiv = document.getElementById('passwordStrength');
+        
+        if (strengthDiv) {
+            strengthDiv.className = `password-strength strength-${strength}`;
+        }
+    }
+
+    function checkPasswordStrength(password) {
+        let strength = 0;
+        
+        if (password.length >= 8) strength++;
+        if (password.match(/[a-z]+/)) strength++;
+        if (password.match(/[A-Z]+/)) strength++;
+        if (password.match(/[0-9]+/)) strength++;
+        if (password.match(/[$@#&!]+/)) strength++;
+        
+        return Math.min(strength, 4);
+    }
+
+    // ========== TEST API FUNCTION ==========
+    async function testChangePasswordAPI() {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert('❌ No token found');
+            return;
+        }
+        
+        const currentPassword = document.getElementById('currentPassword').value.trim();
+        const newPassword = document.getElementById('newPassword').value.trim();
+        
+        if (!currentPassword || !newPassword) {
+            alert('❌ Please fill in both current and new password fields');
+            return;
+        }
+        
+        console.log('🧪 Testing change password API...');
+        console.log('Token (first 30 chars):', token.substring(0, 30) + '...');
+        
+        const testData = {
+            currentPassword: currentPassword,
+            newPassword: newPassword
+        };
+        
+        try {
+            const response = await fetch('/api/auth/change-password', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(testData)
+            });
+            
+            console.log('Response status:', response.status);
+            console.log('Response headers:', [...response.headers.entries()]);
+            
+            const text = await response.text();
+            console.log('Response text:', text);
+            
+            try {
+                const data = JSON.parse(text);
+                console.log('Parsed response:', data);
+                alert(`Result: ${response.status}\n\n${JSON.stringify(data, null, 2)}`);
+            } catch (e) {
+                console.error('Parse error:', e);
+                alert(`Status: ${response.status}\n\n${text.substring(0, 200)}`);
+            }
+            
+        } catch (error) {
+            console.error('Test error:', error);
+            alert('❌ Error: ' + error.message);
+        }
+    }
+
+    // ========== INITIALIZE PASSWORD CHANGE FORM ==========
+    // Call this when showing the password change form
+    function initializePasswordChangeForm() {
+        addPasswordStrengthIndicator();
+        
+        // Add padding to input fields for icons
+        const passwordFields = ['currentPassword', 'newPassword', 'confirmPassword'];
+        passwordFields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                field.style.paddingRight = '40px';
+            }
+        });
     }
 
     // Add to your existing showMessage function or create one
